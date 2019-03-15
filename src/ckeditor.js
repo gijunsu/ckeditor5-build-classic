@@ -3,6 +3,26 @@
  * For licensing, see LICENSE.md.
  */
 
+
+// [추가하는 방법]
+// 1. npm install --save-dev @ckeditor/{페키지명}
+// 2. import Alignment from '@ckeditor/{페키지명}/src/{페키지명}';
+// 3. ClassicEditor.builtinPlugins = [ 에 추가
+// 4. ClassicEditor.defaultConfig = { toolbar: { items: [ 에 추가
+// 5. ClassicEditor.defaultConfig = { 에 별도 옵션 추가
+// 6. yarn run build
+
+// [installed]
+// npm install --save @ckeditor/ckeditor5-alignment
+// npm install --save @ckeditor/ckeditor5-basic-styles
+// npm install --save @ckeditor/ckeditor5-font
+// npm install --save @ckeditor/ckeditor5-highlight
+
+// [pass]
+// @ckeditor/ckeditor5-autosave //추후에 적용
+// @ckeditor/ckeditor5-clipboard/src/clipboard //추후에 설치
+
+
 // The editor creator to use.
 import ClassicEditorBase from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
 
@@ -28,6 +48,12 @@ import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefrom
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 
+import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
+import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
+import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
+import Font from '@ckeditor/ckeditor5-font/src/font';
+import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight'
+
 export default class ClassicEditor extends ClassicEditorBase {}
 
 // Plugins to include in the build.
@@ -52,7 +78,13 @@ ClassicEditor.builtinPlugins = [
 	Paragraph,
 	PasteFromOffice,
 	Table,
-	TableToolbar
+	TableToolbar,
+
+	Alignment,
+	Underline,
+	Strikethrough,
+	Font,
+	Highlight,
 ];
 
 // Editor configuration.
@@ -60,18 +92,29 @@ ClassicEditor.defaultConfig = {
 	toolbar: {
 		items: [
 			'heading',
+			'fontFamily',
+			'fontSize',
 			'|',
 			'bold',
 			'italic',
+			'underline',
+			// 'strikethrough',
+			'|',
+			'highlight',
+			'|',
+			'alignment:left', 'alignment:right', 'alignment:center', //'alignment:justify',
+			'|',
+			// 'bulletedList',
+			// 'numberedList',
+			'|',
 			'link',
-			'bulletedList',
-			'numberedList',
 			'imageUpload',
-			'blockQuote',
-			'insertTable',
 			'mediaEmbed',
+			'insertTable',
+			'blockQuote',
+			'|',
 			'undo',
-			'redo'
+			'redo',
 		]
 	},
 	image: {
@@ -79,16 +122,46 @@ ClassicEditor.defaultConfig = {
 			'imageStyle:full',
 			'imageStyle:side',
 			'|',
-			'imageTextAlternative'
+			'imageTextAlternative',
 		]
 	},
 	table: {
 		contentToolbar: [
 			'tableColumn',
 			'tableRow',
-			'mergeTableCells'
+			'mergeTableCells',
+		]
+	},
+	fontFamily: {
+		options: [
+			'기본값, default',
+
+			'나눔고딕, Nanum Gothic, sans-serif',
+			'나눔명조, Nanum Myeongjo, serif',
+			// '나눔고딕 코딩, Nanum Gothic Coding, monospace',
+			'나눔손글씨 붓, Nanum Brush Script, cursive',
+			'나눔손글씨 펜, Nanum Pen Script, cursive',
+
+			'제주고딕, Jeju Gothic, sans-serif',
+			'제주한라산, Jeju Hallasan, cursive',
+			'제주명조, Jeju Myeongjo, serif',
+			
+			'노토산스, Noto Sans KR, sans-serif',
+
+			'한나체, Hanna, sans-serif',
+
+			// 'KoPub 바탕, KoPub Batang, serif',
+
+			// 'Arial, Helvetica, sans-serif',
+			// 'Courier New, Courier, monospace',
+			// 'Georgia, serif',
+			// 'Lucida Sans Unicode, Lucida Grande, sans-serif',
+			// 'Tahoma, Geneva, sans-serif',
+			// 'Times New Roman, Times, serif',
+			// 'Trebuchet MS, Helvetica, sans-serif',
+			// 'Verdana, Geneva, sans-serif',
 		]
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
-	language: 'en'
+	language: 'ko'
 };
