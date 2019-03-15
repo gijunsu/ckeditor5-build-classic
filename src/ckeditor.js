@@ -20,7 +20,7 @@
 
 // [pass]
 // @ckeditor/ckeditor5-autosave //추후에 적용
-// @ckeditor/ckeditor5-clipboard/src/clipboard //추후에 설치
+// @ckeditor/ckeditor5-clipboard //추후에 적용
 
 
 // The editor creator to use.
@@ -52,7 +52,12 @@ import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
 import Font from '@ckeditor/ckeditor5-font/src/font';
-import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight'
+import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight';
+
+import Clipboard from '@ckeditor/ckeditor5-clipboard/src/clipboard';
+import Autosave from '@ckeditor/ckeditor5-autosave/src/autosave';
+
+import './styles.css';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -85,6 +90,10 @@ ClassicEditor.builtinPlugins = [
 	Strikethrough,
 	Font,
 	Highlight,
+
+	//unused
+	Clipboard,
+	Autosave,
 ];
 
 // Editor configuration.
@@ -102,11 +111,10 @@ ClassicEditor.defaultConfig = {
 			'|',
 			'highlight',
 			'|',
-			'alignment:left', 'alignment:right', 'alignment:center', //'alignment:justify',
+			'alignment:left', 'alignment:center', 'alignment:right',
 			'|',
 			// 'bulletedList',
 			// 'numberedList',
-			'|',
 			'link',
 			'imageUpload',
 			'mediaEmbed',
@@ -162,6 +170,6 @@ ClassicEditor.defaultConfig = {
 			// 'Verdana, Geneva, sans-serif',
 		]
 	},
-	// This value must be kept in sync with the language defined in webpack.config.js.
+	// webpack.config.js에도 수정해야함
 	language: 'ko'
 };

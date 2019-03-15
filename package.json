@@ -94,7 +94,9 @@
     }
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-autosave": "^11.0.0",
     "@ckeditor/ckeditor5-basic-styles": "^11.0.0",
+    "@ckeditor/ckeditor5-clipboard": "^11.0.0",
     "@ckeditor/ckeditor5-font": "^11.0.0",
     "@ckeditor/ckeditor5-highlight": "^11.0.0"
   }
